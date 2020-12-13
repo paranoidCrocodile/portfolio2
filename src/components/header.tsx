@@ -1,30 +1,41 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
+import Button from "./common/button";
 
-const HeaderDiv = styled.header`
+interface HeaderProp {
+  siteTitle: string;
+}
+
+const HeaderDiv = styled.div`
+  position: sticky;
+  top: 0px;
   background: rebeccapurple;
-  margin-bottom: 1.45rem;
+  color: white;
 `;
 
-const Div = styled.div`
-  margin: 0 auto;
-  max-width: 960px;
-  padding: 1.45rem 1.0875rem;
+const FlexContainer = styled.div`
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
 `;
 
-const H1 = styled.h1`
-  margin: 0;
+const LinkContainer = styled.div`
+  padding: 1rem 0 1rem 0;
 `;
 
 const HeaderLink = styled(Link)`
   color: white;
   text-decoration: none;
+  margin: 1rem;
 `;
 
-interface HeaderProp {
-  siteTitle: string;
-}
+const ThemeButton = styled(Button)`
+  background-color: inherit;
+  color: inherit;
+  padding: 1rem 0 1rem 0;
+`;
 
 /**
  * Returns a styled header for reuse in each page.
@@ -34,11 +45,15 @@ interface HeaderProp {
 
 const Header = ({ siteTitle }: HeaderProp): React.ReactElement => (
   <HeaderDiv>
-    <Div>
-      <H1>
-        <HeaderLink to="/">{siteTitle}</HeaderLink>
-      </H1>
-    </Div>
+    <FlexContainer>
+      <HeaderLink to="/">{siteTitle}</HeaderLink>
+      <LinkContainer>
+        <HeaderLink to="/bio">Bio</HeaderLink>
+        <HeaderLink to="/projects">Projects</HeaderLink>
+        <HeaderLink to="/blog">Blog</HeaderLink>
+      </LinkContainer>
+      <ThemeButton onClick={(e) => console.log(e)}>Theme</ThemeButton>
+    </FlexContainer>
   </HeaderDiv>
 );
 

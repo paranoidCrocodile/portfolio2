@@ -2,7 +2,7 @@
 
 module.exports = {
   siteMetadata: {
-    title: `gatsby-starter`,
+    title: `portfolio2`,
     author: `crocsdundee`,
     description: `A starter template based on the default starter, but with styled-components and typescript instead.`,
   },
@@ -23,6 +23,12 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`,
       },
     },
   ],
