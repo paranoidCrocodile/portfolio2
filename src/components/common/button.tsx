@@ -2,21 +2,22 @@ import React from "react";
 import styled from "styled-components";
 
 interface ButtonProps {
-  children?: React.ReactNode;
+  children: React.ReactNode;
   className?: string;
   onClick: (e: React.MouseEvent) => void;
 }
 
-const ButtonDiv = styled.div<ButtonProps>`
+const ButtonDiv = styled.div`
+  color: inherit;
+  background: inherit;
   cursor: pointer;
-  transition: all 0.25s ease-in-out;
 `;
 
-const Button: React.FC<ButtonProps> = ({
+const Button = ({
   children,
   className,
   onClick,
-}: ButtonProps) => (
+}: ButtonProps): React.ReactElement => (
   <ButtonDiv
     className={className || ""}
     onClick={(e: React.MouseEvent) => onClick(e)}

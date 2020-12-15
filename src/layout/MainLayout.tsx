@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useStaticQuery, graphql } from "gatsby";
 import Header from "../components/header";
+import Theme, { lightTheme, darkTheme } from "../components/common/theme";
+import GlobalStyle from "../components/common/globalStyle";
 import "../style/reset.css";
 
 interface LayoutProp {
   children?: React.ReactNode;
   pageTitle?: string;
   pageSubtitle?: string;
+  empty: boolean;
+}
+
+interface MainProps {
+  empty: boolean;
 }
 
 const HeaderDiv = styled(Header)`
@@ -18,8 +25,14 @@ const HeaderDiv = styled(Header)`
 const PageHead = styled.div`
   width: 100vw;
   height: 12rem;
-  background-color: #3498db;
-  color: white;
+  ${(props) => {
+    const { isDark, fontLight, main, backgroundSecond } = props.theme;
+    return `
+      background-color: ${isDark ? backgroundSecond : main};
+      color: ${fontLight};
+      ${isDark ? `border-bottom: 1px solid ${main}` : ``};
+    `;
+  }}
 `;
 
 const PageHeadDiv = styled.div`
@@ -45,7 +58,7 @@ const FooterDiv = styled.div`
 const Footer = styled.footer`
   width: 100vw;
   height: 5rem;
-  background-color: #205f8a;
+  background-color: ${(props) => props.theme.third};
   color: #fff;
   display: flex;
   justify-content: center;
@@ -53,7 +66,7 @@ const Footer = styled.footer`
 `;
 
 const Backdrop = styled.div`
-  background-color: #f7f7f7;
+  background-color: ${(props) => props.theme.background};
   width: 100vw;
   height: 100%;
   z-index: -1;
@@ -65,10 +78,11 @@ const Main = styled.div`
   min-height: 17.75rem;
 `;
 
-const MainLayout: React.FC = ({
+const MainLayout = ({
   children,
   pageTitle,
   pageSubtitle,
+  empty,
 }: LayoutProp): React.ReactElement => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -80,21 +94,40 @@ const MainLayout: React.FC = ({
     }
   `);
 
+  const preferDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const [themeBool, changeTheme] = useState(preferDark);
+
   return (
-    <Backdrop>
-      <HeaderDiv siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <PageHead>
-        <PageHeadDiv>
-          <PageTitle>{pageTitle}</PageTitle>
-          <PageSubtitle>{pageSubtitle}</PageSubtitle>
-        </PageHeadDiv>
-      </PageHead>
-      <Main>{children}</Main>
-      <Footer>
-        <FooterDiv>© {new Date().getFullYear()}, Built with Gatsby</FooterDiv>
-      </Footer>
-    </Backdrop>
+    <>
+      <GlobalStyle />
+      <Theme {...(themeBool ? lightTheme : darkTheme)}>
+        <Backdrop>
+          <HeaderDiv
+            siteTitle={data.site.siteMetadata?.title || `title`}
+            changeTheme={changeTheme}
+            themeBool={themeBool}
+          />
+          {empty ? (
+            children
+          ) : (
+            <>
+              <PageHead>
+                <PageHeadDiv>
+                  <PageTitle>{pageTitle}</PageTitle>
+                  <PageSubtitle>{pageSubtitle}</PageSubtitle>
+                </PageHeadDiv>
+              </PageHead>
+              <Main>{children}</Main>
+              <Footer>
+                <FooterDiv>
+                  © {new Date().getFullYear()}, Built with Gatsby
+                </FooterDiv>
+              </Footer>
+            </>
+          )}
+        </Backdrop>
+      </Theme>
+    </>
   );
 };
-
 export default MainLayout;

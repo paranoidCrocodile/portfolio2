@@ -1,33 +1,47 @@
 import React from "react";
 import styled from "styled-components";
 import MainLayout from "../layout/MainLayout";
+import { Link } from "gatsby";
+import Icon from "../components/common/icon";
 import SEO from "../components/seo";
-import Image from "../components/image";
-
-const ImgDiv = styled.div`
-  max-width: 300px;
-  margin-bottom: 1.45rem;
+import GlobalStyle from "../components/common/globalStyle";
+const Backdrop = styled.div`
+  width: 100vw;
+  height: 100vh;
+  color: ${(props) => props.theme.fontLight};
+  background-color: ${(props) => props.theme.backgroundSecondary};
 `;
 
+const TitleCard = styled.div``;
+const Links = styled.div``;
+const Socials = styled.div``;
+
 const Index: React.FC = (): React.ReactElement => (
-  <MainLayout>
-    <div>
-      <SEO title="Home" />
-      <h1>This is a starter</h1>
-      <p>
-        This is based off the default gatsby-starter, but with these extra
-        features:
-      </p>
-      <ul>
-        <li>TypeScript</li>
-        <li>Styled-components</li>
-      </ul>
-      <p>Made by crocsdundee</p>
-      <ImgDiv>
-        <Image />
-      </ImgDiv>
-    </div>
-  </MainLayout>
+  <>
+    <GlobalStyle />
+    <MainLayout empty={true}>
+      <Backdrop>
+        <SEO title="index" />
+        <TitleCard>
+          <p>Hello! I am</p>
+          <h1>Crocodile</h1>
+          <p>A web developer for hire!</p>
+        </TitleCard>
+        <Links>
+          <Link to="/bio">Bio</Link>
+          <Link to="/projects">Projects</Link>
+          <Link to="/contacts">Contacts</Link>
+        </Links>
+        <Socials>
+          <Icon />
+          <Icon />
+          <Icon />
+          <Icon />
+          <Icon />
+        </Socials>
+      </Backdrop>
+    </MainLayout>
+  </>
 );
 
 export default Index;

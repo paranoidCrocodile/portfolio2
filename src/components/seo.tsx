@@ -15,12 +15,12 @@ interface metaObj {
   content: string;
 }
 
-export default function SEO({
+const SEO = ({
   description = "",
-  lang = `en`,
+  lang = "en",
   meta = [],
   title,
-}: SEOProps): React.ReactElement {
+}: SEOProps): React.ReactElement => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -83,4 +83,6 @@ export default function SEO({
       meta={metaAry.concat(meta)}
     />
   );
-}
+};
+
+export default SEO;
