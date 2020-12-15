@@ -1,16 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-/**
- * A generic, mostly unstyled button
- * @param {object} propObject{
- *   @param {JSX.Element} [children]
- *   @param {string} [className]
- *   @param {React.MouseEvent} onClick
- * }
- * @return {React.FC}
- */
-
 interface ButtonProps {
   children?: React.ReactNode;
   className?: string;

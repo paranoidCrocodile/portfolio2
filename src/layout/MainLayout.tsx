@@ -4,12 +4,6 @@ import { useStaticQuery, graphql } from "gatsby";
 import Header from "../components/header";
 import "../style/reset.css";
 
-/**
- * Sets up the Main Layout for the page, CSS reset included
- * @param {<React.ReactNode>} [childElement] <ONLY TAKES UP TO ONE CHILD, Wrap MainLayout descendants in a div.>
- * @return {<React.ReactElement>}
- */
-
 interface LayoutProp {
   children?: React.ReactNode;
   pageTitle?: string;

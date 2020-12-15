@@ -1,12 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-/**
- * A generic card
- * @param {React.ReactNode} [children]
- * @param {string} [className]
- */
-
 interface CardProps {
   children?: React.ReactNode;
   className?: string;

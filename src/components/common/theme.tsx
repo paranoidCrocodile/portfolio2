@@ -1,17 +1,6 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
 
-/**
- * container for applying theme colors
- * @param {object}{
- *   @param {string} main
- *   @param {string} second
- *   @param {string} third
- *   @param {string} font
- *   @param {React.ReactNode}
- * }
- */
-
 interface ThemeProps {
   main: string;
   second: string;

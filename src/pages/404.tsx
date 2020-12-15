@@ -2,11 +2,6 @@ import React from "react";
 import MainLayout from "../layout/MainLayout";
 import SEO from "../components/seo";
 
-/**
- * Returns the NotFoundPage component which becomes the 404 page of the project.
- * @return {React.ReactElement}
- */
-
 const NotFoundPage: React.FC = (): React.ReactElement => (
   <MainLayout>
     <div>

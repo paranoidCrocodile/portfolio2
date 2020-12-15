@@ -4,11 +4,6 @@ import MainLayout from "../layout/MainLayout";
 import SEO from "../components/seo";
 import Image from "../components/image";
 
-/**
- * The index page and also the entry point of the project.
- * @return {<React.ReactElement>}
- */
-
 const ImgDiv = styled.div`
   max-width: 300px;
   margin-bottom: 1.45rem;

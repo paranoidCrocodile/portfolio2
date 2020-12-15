@@ -2,11 +2,6 @@ import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import Img from "gatsby-image";
 
-/**
- * Statically query the astronaut image in root/src/images, the GraphQL query is hard-coded so it only gets this image.
- * @return {<React.ReactElement>}
- */
-
 const Image = (): React.ReactElement => {
   const data = useStaticQuery(graphql`
     query {

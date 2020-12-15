@@ -3,12 +3,6 @@ import React from "react";
 import styled from "styled-components";
 import Button from "./common/button";
 
-/**
- * Returns a styled header for reuse in each page.
- * @param {<string>} setTitle sets the title of the page, format: "<setTitle> | Gatsby Starter", navigate to root/gatsby-config.js to change the second part of the title.
- * @return {<React.ReactElement>}
- */
-
 interface HeaderProp {
   siteTitle: string;
 }
