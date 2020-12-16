@@ -1,15 +1,18 @@
 import React from "react";
 import styled from "styled-components";
-import MainLayout from "../layout/MainLayout";
+import BaseLayout from "../layout/BaseLayout";
 import { Link } from "gatsby";
-import Icon from "../components/common/icon";
-import { themedDiv, themedDivBorderless } from "../components/common/mixins";
+import {
+  themedDiv,
+  themedDivBorderless,
+  hoverable,
+} from "../components/common/mixins";
 import SEO from "../components/seo";
 
 const Backdrop = styled.div`
-  width: 100vw;
-  height: 100vh;
   ${themedDivBorderless}
+  height: 100vh;
+  width: 100%;
 `;
 
 const Container = styled.div`
@@ -50,12 +53,13 @@ const IndexLink = styled(Link)`
     margin-left: 1rem;
   }
   ${themedDiv}
+  ${hoverable}
 `;
 
 const Socials = styled.div``;
 
 const Index: React.FC = (): React.ReactElement => (
-  <MainLayout empty={true}>
+  <BaseLayout>
     <Backdrop>
       <SEO title="index" />
       <Container>
@@ -69,16 +73,10 @@ const Index: React.FC = (): React.ReactElement => (
           <IndexLink to="/projects">Projects</IndexLink>
           <IndexLink to="/contacts">Contacts</IndexLink>
         </Links>
-        <Socials>
-          <Icon />
-          <Icon />
-          <Icon />
-          <Icon />
-          <Icon />
-        </Socials>
+        <Socials></Socials>
       </Container>
     </Backdrop>
-  </MainLayout>
+  </BaseLayout>
 );
 
 export default Index;

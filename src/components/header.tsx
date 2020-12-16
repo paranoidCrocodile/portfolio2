@@ -1,19 +1,17 @@
 import { Link } from "gatsby";
-import React, { Dispatch, SetStateAction } from "react";
+import React from "react";
 import styled from "styled-components";
-import Button from "./common/button";
-
-interface HeaderProp {
-  siteTitle: string;
-  themeBool: boolean;
-  changeTheme: Dispatch<SetStateAction<boolean>>;
-}
 
 const HeaderDiv = styled.div`
   position: sticky;
   top: 0px;
   color: ${(props) => props.theme.fontLight};
   background-color: ${(props) => props.theme.second};
+`;
+
+const BlankDiv = styled.div`
+  height: 15px;
+  width: 15px;
 `;
 
 const FlexContainer = styled.div`
@@ -38,24 +36,15 @@ const HeaderLink = styled(Link)`
   }
 `;
 
-const ThemeButton = styled(Button)`
-  padding: 1rem 0 1rem 0;
-`;
-
-const Header = ({
-  siteTitle,
-  changeTheme,
-  themeBool,
-}: HeaderProp): React.ReactElement => (
+const Header = (): React.ReactElement => (
   <HeaderDiv>
     <FlexContainer>
-      <HeaderLink to="/">{siteTitle}</HeaderLink>
+      <BlankDiv />
       <LinkContainer>
         <HeaderLink to="/bio">Bio</HeaderLink>
         <HeaderLink to="/projects">Projects</HeaderLink>
         <HeaderLink to="/blog">Contacts</HeaderLink>
       </LinkContainer>
-      <ThemeButton onClick={(e) => changeTheme(!themeBool)}>Theme</ThemeButton>
     </FlexContainer>
   </HeaderDiv>
 );

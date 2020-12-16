@@ -9,4 +9,4 @@ SVGs
 
 Pages
   -style an animated, toggle theme icon
-  -make hovering animation for buttons
+  -make hovering animation for buttons (DONE)

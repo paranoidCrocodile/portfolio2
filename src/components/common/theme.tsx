@@ -1,7 +1,7 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
 
-interface ThemeProps {
+interface ThemeObjProps {
   main: string;
   second: string;
   third: string;
@@ -45,7 +45,7 @@ const Theme = ({
   fontDark,
   isDark,
   children,
-}: ThemeProps): React.ReactElement => {
+}: ThemeObjProps): React.ReactElement => {
   return (
     <ThemeProvider
       theme={{
@@ -64,4 +64,4 @@ const Theme = ({
   );
 };
 export default Theme;
-export { lightTheme, darkTheme };
+export { lightTheme, darkTheme, ThemeObjProps };

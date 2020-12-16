@@ -1,8 +1,7 @@
 //to be expanded
+type SVG = React.ReactElement | AnyStyledComponent;
 
-export interface SEOProps {
-  title: string;
-  description?: string;
-  lang?: string;
-  meta?: metaObj[];
+declare module "*.svg" {
+  const content: SVG;
+  export default content;
 }

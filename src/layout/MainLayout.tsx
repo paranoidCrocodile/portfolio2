@@ -1,17 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import { useStaticQuery, graphql } from "gatsby";
 import Header from "../components/header";
-import Theme, { lightTheme, darkTheme } from "../components/common/theme";
 import { themedDiv } from "../components/common/mixins";
-import GlobalStyle from "../components/globalStyle";
-import "../style/reset.css";
+import BaseLayout from "./BaseLayout";
 
 interface LayoutProp {
   children?: React.ReactNode;
-  pageTitle?: string;
-  pageSubtitle?: string;
-  empty: boolean;
+  pageTitle: string;
+  pageSubtitle: string;
 }
 
 const HeaderDiv = styled(Header)`
@@ -72,52 +68,24 @@ const MainLayout = ({
   children,
   pageTitle,
   pageSubtitle,
-  empty,
 }: LayoutProp): React.ReactElement => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `);
-
-  const preferDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const [themeBool, changeTheme] = useState(preferDark);
-
   return (
-    <>
-      <GlobalStyle />
-      <Theme {...(themeBool ? lightTheme : darkTheme)}>
-        <Backdrop>
-          {empty ? (
-            children
-          ) : (
-            <>
-              <HeaderDiv
-                siteTitle={data.site.siteMetadata?.title || `title`}
-                changeTheme={changeTheme}
-                themeBool={themeBool}
-              />
-              <PageHead>
-                <PageHeadDiv>
-                  <PageTitle>{pageTitle}</PageTitle>
-                  <PageSubtitle>{pageSubtitle}</PageSubtitle>
-                </PageHeadDiv>
-              </PageHead>
-              <Main>{children}</Main>
-              <Footer>
-                <FooterDiv>
-                  © {new Date().getFullYear()}, Built with Gatsby
-                </FooterDiv>
-              </Footer>
-            </>
-          )}
-        </Backdrop>
-      </Theme>
-    </>
+    <BaseLayout>
+      <Backdrop>
+        <HeaderDiv />
+        <PageHead>
+          <PageHeadDiv>
+            <PageTitle>{pageTitle}</PageTitle>
+            <PageSubtitle>{pageSubtitle}</PageSubtitle>
+          </PageHeadDiv>
+        </PageHead>
+        <Main>{children}</Main>
+        <Footer>
+          <FooterDiv>© {new Date().getFullYear()}, Built with Gatsby</FooterDiv>
+        </Footer>
+      </Backdrop>
+    </BaseLayout>
   );
 };
+
 export default MainLayout;

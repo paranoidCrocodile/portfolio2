@@ -4,7 +4,6 @@ import { themedDiv } from "../common/mixins";
 
 interface ButtonProps {
   children: React.ReactNode;
-  className?: string;
   onClick: (e: React.MouseEvent) => void;
 }
 
@@ -13,15 +12,8 @@ const ButtonDiv = styled.div`
   ${themedDiv}
 `;
 
-const Button = ({
-  children,
-  className,
-  onClick,
-}: ButtonProps): React.ReactElement => (
-  <ButtonDiv
-    className={className || ""}
-    onClick={(e: React.MouseEvent) => onClick(e)}
-  >
+const Button = ({ children, onClick }: ButtonProps): React.ReactElement => (
+  <ButtonDiv onClick={(e: React.MouseEvent) => onClick(e)}>
     {children}
   </ButtonDiv>
 );
