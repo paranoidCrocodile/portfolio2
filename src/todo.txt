@@ -1,4 +1,12 @@
-- make hovering animation for buttons
-- learn GraphQL to import svgs
-- animate svgs
-- add theme toggle icon to the index page
+2020/12/16, 05:28PM
+GraphQL
+  -learn how to fetch data with it
+  -fetch all svgs
+
+SVGs
+  -create animations
+  -auto-change color to main theme color
+
+Pages
+  -style an animated, toggle theme icon
+  -make hovering animation for buttons
