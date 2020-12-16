@@ -1,6 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { themedDiv } from "../common/mixins";
+import {
+  alternateBackgroundSec,
+  alternateBorder,
+  shadow,
+} from "../common/mixins";
 
 interface CardProps {
   children: React.ReactNode;
@@ -12,7 +16,9 @@ const CardDiv = styled.div`
   border-radius: 15px;
   padding: 1rem;
   margin: 1rem 0rem;
-  ${themedDiv}
+  ${alternateBackgroundSec}
+  ${alternateBorder}
+  ${shadow}
 `;
 
 const Card = ({ children, className }: CardProps): React.ReactElement => (

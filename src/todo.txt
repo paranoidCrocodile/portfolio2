@@ -1,12 +1,18 @@
 2020/12/16, 05:28PM
 GraphQL
-  -learn how to fetch data with it
-  -fetch all svgs
+  -learn how to fetch data with it (DONE)
+  -fetch all svgs (DONE)
 
 SVGs
-  -create animations
-  -auto-change color to main theme color
+  -create animations (NOT DONE)
+  -auto-change color to main theme color (NOT DONE)
 
 Pages
   -style an animated, toggle theme icon
   -make hovering animation for buttons (DONE)
+
+2020/12/17, 12:26AM
+SVGs:
+  - add dev.svg to index page
+  - animate dev.svg
+  - change svg color dynamically to match the main color.

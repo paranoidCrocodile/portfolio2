@@ -2,15 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import BaseLayout from "../layout/BaseLayout";
 import { Link } from "gatsby";
-import {
-  themedDiv,
-  themedDivBorderless,
-  hoverable,
-} from "../components/common/mixins";
+import { alternateBackgroundSec, hoverable } from "../components/common/mixins";
 import SEO from "../components/seo";
 
 const Backdrop = styled.div`
-  ${themedDivBorderless}
+  ${alternateBackgroundSec}
   height: 100vh;
   width: 100%;
 `;
@@ -18,7 +14,7 @@ const Backdrop = styled.div`
 const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto 0 auto;
-  padding: 31.5vh 0 31.5vh 0;
+  padding: 31.5vh 1rem 31.5vh 1rem;
 `;
 
 const TitleCard = styled.div`
@@ -46,13 +42,13 @@ const IndexLink = styled(Link)`
   text-align: center;
   display: inline-block;
   text-decoration: none;
-  color: inherit;
+  color: ${(props) => props.theme.fontLight};
   height: 3rem;
   width: 5rem;
+  background-color: ${(props) => props.theme.main};
   & + & {
     margin-left: 1rem;
   }
-  ${themedDiv}
   ${hoverable}
 `;
 

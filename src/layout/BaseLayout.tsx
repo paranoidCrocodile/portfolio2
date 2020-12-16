@@ -1,30 +1,27 @@
 import React, { useState } from "react";
-import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 import ThemeIcon from "../assets/svg/themeIcon.svg";
 import "../style/reset.css";
+import "../style/global.css";
 
 interface BaseLayoutProps {
   children: React.ReactNode;
 }
 
 const ThemeButton = styled.div`
-  background-color: rgba(0, 0, 0, 0);
   position: fixed;
-  top: 1rem;
-  left: 15px;
+  height: 6rem;
+  width: 6rem;
+  transform: rotateZ(45deg);
+  top: -4.3rem;
+  left: -3rem;
   z-index: 999;
+  transition: background-color 0.25s ease-in-out;
+  background-color: ${(props) => props.theme.main};
   & > svg {
-    fill: ${(props) =>
-      props.theme.isDark ? props.theme.fontLight : props.theme.fontDark};
-  }
-`;
-
-const GlobalStyle = createGlobalStyle`
-  :root{
-    font-size: 25px;
-  }
-  *{
-    transition: color 0.25s ease-in-out;
+    position: relative;
+    transform: translate(4.6rem, 3.6rem) rotate(-45deg);
+    fill: ${(props) => props.theme.fontLight};
   }
 `;
 
@@ -55,7 +52,6 @@ const BaseLayout = ({ children }: BaseLayoutProps): React.ReactElement => {
   const [themeBool, changeTheme] = useState(preferDark);
   return (
     <>
-      <GlobalStyle />
       <ThemeProvider theme={themeBool ? darkTheme : lightTheme}>
         <ThemeButton onClick={(e) => changeTheme(!themeBool)}>
           <ThemeIcon />

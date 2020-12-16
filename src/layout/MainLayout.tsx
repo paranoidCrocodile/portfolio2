@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Header from "../components/header";
-import { themedDiv } from "../components/common/mixins";
+import { alternateBorder, shadow } from "../components/common/mixins";
 import BaseLayout from "./BaseLayout";
 
 interface LayoutProp {
@@ -18,7 +18,15 @@ const HeaderDiv = styled(Header)`
 const PageHead = styled.div`
   width: 100vw;
   height: 12rem;
-  ${themedDiv}
+  ${alternateBorder}
+  ${shadow}
+  ${(props) => {
+    const { isDark, fontLight, backgroundSecond, main } = props.theme;
+    return `
+    background-color: ${isDark ? backgroundSecond : main};
+    color: ${fontLight};
+    `;
+  }}
 `;
 
 const PageHeadDiv = styled.div`

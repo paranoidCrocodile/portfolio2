@@ -1,43 +1,28 @@
 import { css } from "styled-components";
 
-const themedDiv = css`
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
-  * {
-    color: inherit;
-    background-color: inherit;
-  }
+const alternateBackgroundSec = css`
   ${(props) => {
-    const { isDark, main, backgroundSecond, fontLight, fontDark } = props.theme;
-    return isDark
-      ? `
-  background-color: ${backgroundSecond};
-  border: 1px ${main} solid;
-  color: ${fontLight};
-  `
-      : `
-  background-color: ${backgroundSecond};
-  color: ${fontDark};
+    const { backgroundSecond, fontLight, fontDark, isDark } = props.theme;
+    return `
+      background-color: ${backgroundSecond};
+      color: ${isDark ? fontLight : fontDark};
+    `;
+  }}
+`;
+
+const alternateMain = css`
+  ${(props) => {
+    const { main, fontLight } = props.theme;
+    return `
+    background-color: ${main};
+    color: ${fontLight};
   `;
   }}
 `;
 
-const themedDivBorderless = css`
-  * {
-    color: inherit;
-    background-color: inherit;
-  }
-  ${(props) => {
-    const { isDark, background, fontLight, fontDark } = props.theme;
-    return isDark
-      ? `
-  background-color: ${background};
-  color: ${fontLight};
-  `
-      : `
-  background-color: ${background};
-  color: ${fontDark};
-  `;
-  }}
+const alternateBorder = css`
+  ${(props) =>
+    props.theme.isDark ? `border: 1px ${props.theme.main} solid` : ``};
 `;
 
 const hoverable = css`
@@ -48,4 +33,14 @@ const hoverable = css`
   }
 `;
 
-export { themedDiv, themedDivBorderless, hoverable };
+const shadow = css`
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+`;
+
+export {
+  hoverable,
+  alternateBackgroundSec,
+  alternateMain,
+  alternateBorder,
+  shadow,
+};
