@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { themedDiv } from "../common/mixins";
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -8,9 +9,8 @@ interface ButtonProps {
 }
 
 const ButtonDiv = styled.div`
-  color: inherit;
-  background: inherit;
   cursor: pointer;
+  ${themedDiv}
 `;
 
 const Button = ({

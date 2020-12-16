@@ -3,17 +3,14 @@ import styled from "styled-components";
 import { useStaticQuery, graphql } from "gatsby";
 import Header from "../components/header";
 import Theme, { lightTheme, darkTheme } from "../components/common/theme";
-import GlobalStyle from "../components/common/globalStyle";
+import { themedDiv } from "../components/common/mixins";
+import GlobalStyle from "../components/globalStyle";
 import "../style/reset.css";
 
 interface LayoutProp {
   children?: React.ReactNode;
   pageTitle?: string;
   pageSubtitle?: string;
-  empty: boolean;
-}
-
-interface MainProps {
   empty: boolean;
 }
 
@@ -25,14 +22,7 @@ const HeaderDiv = styled(Header)`
 const PageHead = styled.div`
   width: 100vw;
   height: 12rem;
-  ${(props) => {
-    const { isDark, fontLight, main, backgroundSecond } = props.theme;
-    return `
-      background-color: ${isDark ? backgroundSecond : main};
-      color: ${fontLight};
-      ${isDark ? `border-bottom: 1px solid ${main}` : ``};
-    `;
-  }}
+  ${themedDiv}
 `;
 
 const PageHeadDiv = styled.div`
@@ -102,15 +92,15 @@ const MainLayout = ({
       <GlobalStyle />
       <Theme {...(themeBool ? lightTheme : darkTheme)}>
         <Backdrop>
-          <HeaderDiv
-            siteTitle={data.site.siteMetadata?.title || `title`}
-            changeTheme={changeTheme}
-            themeBool={themeBool}
-          />
           {empty ? (
             children
           ) : (
             <>
+              <HeaderDiv
+                siteTitle={data.site.siteMetadata?.title || `title`}
+                changeTheme={changeTheme}
+                themeBool={themeBool}
+              />
               <PageHead>
                 <PageHeadDiv>
                   <PageTitle>{pageTitle}</PageTitle>

@@ -1,0 +1,4 @@
+- make hovering animation for buttons
+- learn GraphQL to import svgs
+- animate svgs
+- add theme toggle icon to the index page

@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import { themedDiv } from "../common/mixins";
 
 interface CardProps {
-  children?: React.ReactNode;
+  children: React.ReactNode;
   className?: string;
 }
 
@@ -11,15 +12,7 @@ const CardDiv = styled.div`
   border-radius: 15px;
   padding: 1rem;
   margin: 1rem 0rem;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
-  ${(props) => {
-    const { isDark, main, backgroundSecond, fontLight, fontDark } = props.theme;
-    return `
-    background-color: ${backgroundSecond};
-    color: ${isDark ? fontLight : fontDark};
-    ${isDark ? `border: 1px ${main} solid;` : ``}
-    `;
-  }}
+  ${themedDiv}
 `;
 
 const Card = ({ children, className }: CardProps): React.ReactElement => (

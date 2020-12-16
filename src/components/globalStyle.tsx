@@ -5,7 +5,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 25px;
   }
   *{
-    transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out;
+    transition: color 0.25s ease-in-out;
   }
 `;
 

@@ -3,34 +3,71 @@ import styled from "styled-components";
 import MainLayout from "../layout/MainLayout";
 import { Link } from "gatsby";
 import Icon from "../components/common/icon";
+import { themedDiv, themedDivBorderless } from "../components/common/mixins";
 import SEO from "../components/seo";
-import GlobalStyle from "../components/common/globalStyle";
+
 const Backdrop = styled.div`
   width: 100vw;
   height: 100vh;
-  color: ${(props) => props.theme.fontLight};
-  background-color: ${(props) => props.theme.backgroundSecondary};
+  ${themedDivBorderless}
 `;
 
-const TitleCard = styled.div``;
-const Links = styled.div``;
+const Container = styled.div`
+  max-width: 1200px;
+  margin: 0 auto 0 auto;
+  padding: 31.5vh 0 31.5vh 0;
+`;
+
+const TitleCard = styled.div`
+  margin-bottom: 1rem;
+`;
+
+const IndexTitle = styled.h1`
+  margin: 0;
+  font-size: 5rem;
+  color: inherit;
+`;
+
+const IndexSubtitle = styled.p`
+  margin: 0;
+  font-size: 1.5rem;
+  color: inherit;
+`;
+
+const Links = styled.div`
+  margin-bottom: 1rem;
+`;
+
+const IndexLink = styled(Link)`
+  padding: 1rem 0;
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+  height: 3rem;
+  width: 5rem;
+  & + & {
+    margin-left: 1rem;
+  }
+  ${themedDiv}
+`;
+
 const Socials = styled.div``;
 
 const Index: React.FC = (): React.ReactElement => (
-  <>
-    <GlobalStyle />
-    <MainLayout empty={true}>
-      <Backdrop>
-        <SEO title="index" />
+  <MainLayout empty={true}>
+    <Backdrop>
+      <SEO title="index" />
+      <Container>
         <TitleCard>
-          <p>Hello! I am</p>
-          <h1>Crocodile</h1>
-          <p>A web developer for hire!</p>
+          <IndexSubtitle>Hello! I am</IndexSubtitle>
+          <IndexTitle>Crocodile</IndexTitle>
+          <IndexSubtitle>A web developer for hire!</IndexSubtitle>
         </TitleCard>
         <Links>
-          <Link to="/bio">Bio</Link>
-          <Link to="/projects">Projects</Link>
-          <Link to="/contacts">Contacts</Link>
+          <IndexLink to="/bio">Bio</IndexLink>
+          <IndexLink to="/projects">Projects</IndexLink>
+          <IndexLink to="/contacts">Contacts</IndexLink>
         </Links>
         <Socials>
           <Icon />
@@ -39,9 +76,9 @@ const Index: React.FC = (): React.ReactElement => (
           <Icon />
           <Icon />
         </Socials>
-      </Backdrop>
-    </MainLayout>
-  </>
+      </Container>
+    </Backdrop>
+  </MainLayout>
 );
 
 export default Index;
