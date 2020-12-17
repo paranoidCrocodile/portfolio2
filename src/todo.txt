@@ -13,6 +13,6 @@ Pages
 
 2020/12/17, 12:26AM
 SVGs:
-  - add dev.svg to index page
+  - add dev.svg to index page (DONE)
   - animate dev.svg
-  - change svg color dynamically to match the main color.
+  - change svg color dynamically to match the main color. (DONE)

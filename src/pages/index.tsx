@@ -4,17 +4,22 @@ import BaseLayout from "../layout/BaseLayout";
 import { Link } from "gatsby";
 import { alternateBackgroundSec, hoverable } from "../components/common/mixins";
 import SEO from "../components/seo";
+import DevAnimation from "../components/animation/dev";
 
 const Backdrop = styled.div`
   ${alternateBackgroundSec}
   height: 100vh;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
 `;
 
 const Container = styled.div`
-  max-width: 1200px;
-  margin: 0 auto 0 auto;
-  padding: 31.5vh 1rem 31.5vh 1rem;
+  width: 50%;
+  margin: 0px 0px 0px 0px;
+  padding: 31.5vh 0;
+  display: inline-block;
+  text-align: right;
 `;
 
 const TitleCard = styled.div`
@@ -52,27 +57,35 @@ const IndexLink = styled(Link)`
   ${hoverable}
 `;
 
-const Socials = styled.div``;
+const SVGDiv = styled.div`
+  width: 50%;
+  height: 25vh;
+  margin: 20vh;
+`;
 
-const Index: React.FC = (): React.ReactElement => (
-  <BaseLayout>
-    <Backdrop>
-      <SEO title="index" />
-      <Container>
-        <TitleCard>
-          <IndexSubtitle>Hello! I am</IndexSubtitle>
-          <IndexTitle>Crocodile</IndexTitle>
-          <IndexSubtitle>A web developer for hire!</IndexSubtitle>
-        </TitleCard>
-        <Links>
-          <IndexLink to="/bio">Bio</IndexLink>
-          <IndexLink to="/projects">Projects</IndexLink>
-          <IndexLink to="/contacts">Contacts</IndexLink>
-        </Links>
-        <Socials></Socials>
-      </Container>
-    </Backdrop>
-  </BaseLayout>
-);
+const Index: React.FC = (): React.ReactElement => {
+  return (
+    <BaseLayout>
+      <Backdrop>
+        <SEO title="index" />
+        <Container>
+          <TitleCard>
+            <IndexSubtitle>Hello! I am</IndexSubtitle>
+            <IndexTitle>Crocodile</IndexTitle>
+            <IndexSubtitle>A web developer for hire!</IndexSubtitle>
+          </TitleCard>
+          <Links>
+            <IndexLink to="/bio">Bio</IndexLink>
+            <IndexLink to="/projects">Projects</IndexLink>
+            <IndexLink to="/contacts">Contacts</IndexLink>
+          </Links>
+        </Container>
+        <SVGDiv>
+          <DevAnimation />
+        </SVGDiv>
+      </Backdrop>
+    </BaseLayout>
+  );
+};
 
 export default Index;
