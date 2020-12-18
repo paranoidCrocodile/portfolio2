@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import styled, { withTheme } from "styled-components";
 import DevSVG from "../../assets/svg/dev.svg";
-import { $, toggleSVGThemeColor } from "../../utils/dom";
+import gsap from "gsap";
+import util from "../../utils/util";
 
 const SVGDiv = styled(DevSVG)`
   width: 100%;
@@ -12,23 +13,43 @@ const SVGDiv = styled(DevSVG)`
   }
 `;
 
-const SVGElementSelectors = [
-  "#ade8c9af-7e2e-4eda-b5c8-b06129257226 > rect:nth-child(26)",
-  "#ade8c9af-7e2e-4eda-b5c8-b06129257226 > path:nth-child(3)",
-  "#ade8c9af-7e2e-4eda-b5c8-b06129257226 > circle:nth-child(27)",
-  "#ade8c9af-7e2e-4eda-b5c8-b06129257226 > circle:nth-child(28)",
-  "#ade8c9af-7e2e-4eda-b5c8-b06129257226 > circle:nth-child(29)",
+const SVGID = "#ade8c9af-7e2e-4eda-b5c8-b06129257226";
+
+const colorChangingParts = [
+  "rect:nth-child(26)",
+  "path:nth-child(3)",
+  "circle:nth-child(27)",
+  "circle:nth-child(28)",
+  "circle:nth-child(29)",
+];
+
+const movingParts = [
+  "path:nth-child(18)",
+  "path:nth-child(6)",
+  "circle:nth-child(16)",
+  "path:nth-child(21)",
 ];
 
 const DevAnimation = (props: Obj): React.ReactElement => {
   useEffect(() => {
-    toggleSVGThemeColor(SVGElementSelectors, props.theme as ThemeObj);
+    const { main } = props.theme as ThemeObj;
+    util.animateEach({
+      elems: util.multi$(SVGID, colorChangingParts, ">") as DOMSVGElement[],
+      fromTos: [[{}, { fill: main, duration: 0 }]],
+      tweenFunc: gsap.fromTo,
+    });
+    util.animateEach({
+      elems: util.multi$(SVGID, movingParts, ">") as DOMSVGElement[],
+      fromTos: [
+        [{}, {}],
+        [{}, {}],
+        [{}, {}],
+        [{}, {}],
+      ],
+      tweenFunc: gsap.fromTo,
+    });
   });
-  return (
-    <div>
-      <SVGDiv />
-    </div>
-  );
+  return <SVGDiv />;
 };
 
 export default withTheme(DevAnimation);

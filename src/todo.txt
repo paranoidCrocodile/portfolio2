@@ -8,11 +8,17 @@ SVGs
   -auto-change color to main theme color (NOT DONE)
 
 Pages
-  -style an animated, toggle theme icon
+  -style an animated, toggle theme icon (NOT DONE)
   -make hovering animation for buttons (DONE)
 
 2020/12/17, 12:26AM
 SVGs:
   - add dev.svg to index page (DONE)
-  - animate dev.svg
+  - animate dev.svg (NOT DONE)
   - change svg color dynamically to match the main color. (DONE)
+
+2020/12/18 5:04PM
+  - add a react.ts in src/utils
+  - make a higher-order-function that executes a given callback only when a React FC is mounted.
+  - animate the moving parts of dev.svg
+

@@ -1,12 +1,12 @@
-function $(elem: string): unknown {
-  return document.querySelector(elem) as unknown;
-}
+const $ = (elem: string): Node => document.querySelector(elem) as Node;
 
-function toggleSVGThemeColor(selectors: string[], theme: ThemeObj): void {
-  const { main } = theme;
-  selectors.map(
-    (selector) => (($(selector) as DOMSVGElement).style.fill = main)
-  );
-}
+const $$ = (elems: string): NodeListOf<Node> =>
+  document.querySelectorAll(elems);
 
-export { $, toggleSVGThemeColor };
+const multi$ = (prefix = "", elems: string[], combinator = ""): unknown[] => [
+  ...elems.map((elem) => $(`${prefix}${combinator}${elem}`)),
+];
+
+const domExport = { $, $$, multi$ };
+
+export default domExport;

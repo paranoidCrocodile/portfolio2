@@ -59,8 +59,8 @@ const IndexLink = styled(Link)`
 
 const SVGDiv = styled.div`
   width: 50%;
-  height: 25vh;
-  margin: 20vh;
+  height: 50vh;
+  margin: 25vh 1rem;
 `;
 
 const Index: React.FC = (): React.ReactElement => {
