@@ -18,7 +18,7 @@ SVGs:
   - change svg color dynamically to match the main color. (DONE)
 
 2020/12/18 5:04PM
-  - add a react.ts in src/utils
-  - make a higher-order-function that executes a given callback only when a React FC is mounted.
-  - animate the moving parts of dev.svg
+  - add a react.ts in src/utils (DONE)
+  - make a higher-order-function that executes a given callback only when a React FC is mounted. (DONE)
+  - animate the moving parts of dev.svg (DONE)
 

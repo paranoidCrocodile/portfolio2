@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Header from "../components/header";
-import { alternateBorder, shadow } from "../components/common/mixins";
+import util from "../utils/util";
 import BaseLayout from "./BaseLayout";
 
 interface LayoutProp {
@@ -9,6 +9,8 @@ interface LayoutProp {
   pageTitle: string;
   pageSubtitle: string;
 }
+
+const { alternateBorder, shadow } = util;
 
 const HeaderDiv = styled(Header)`
   margin: 0 auto;

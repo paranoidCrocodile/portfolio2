@@ -10,6 +10,16 @@ interface DOMSVGElement
     SVGCircleElement,
     SVGPathElement {}
 
+interface SVGDataObj {
+  SVGID: string;
+  colorChangingParts: string[];
+  movingParts: string[];
+}
+
+interface DevSVGDataObj extends SVGDataObj {
+  transformOrigins: string[];
+}
+
 type queriedElement<T> = T | null;
 
 type Obj = Record<string, unknown>;
@@ -18,6 +28,13 @@ interface AnimationObject {
   elems: DOMSVGElement[];
   fromTos: [gsap.TweenVars, gsap.TweenVars?][];
   tweenFunc: function;
+  yoyo: boolean;
+  repeat: number;
+}
+
+interface AnimationCompProps {
+  duration: number;
+  children: React.ReactNode;
 }
 
 interface ThemeObj {

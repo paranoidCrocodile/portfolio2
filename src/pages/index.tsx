@@ -2,9 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import BaseLayout from "../layout/BaseLayout";
 import { Link } from "gatsby";
-import { alternateBackgroundSec, hoverable } from "../components/common/mixins";
+import util from "../utils/util";
 import SEO from "../components/seo";
 import DevAnimation from "../components/animation/dev";
+
+const { alternateBackgroundSec, hoverable } = util;
 
 const Backdrop = styled.div`
   ${alternateBackgroundSec}

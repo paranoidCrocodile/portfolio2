@@ -1,8 +1,19 @@
-const animateEach = ({ elems, fromTos, tweenFunc }: AnimationObject): void =>
-  elems.forEach((elem, i) =>
+const animateEach = ({
+  elems,
+  fromTos,
+  tweenFunc,
+  yoyo,
+  repeat,
+}: AnimationObject): void =>
+  elems.forEach((elem, i) => {
     tweenFunc(elem, ...(fromTos.length == 1 ? fromTos[0] : fromTos[i]))
-  );
+      .yoyo(yoyo)
+      .repeat(repeat);
+  });
 
-const gsapExport = { animateEach };
+const random = (min: number, max: number): number =>
+  Math.random() * (max - min) + min;
+
+const gsapExport = { animateEach, random };
 
 export default gsapExport;

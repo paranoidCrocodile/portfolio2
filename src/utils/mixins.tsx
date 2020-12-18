@@ -37,10 +37,12 @@ const shadow = css`
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
 `;
 
-export {
-  hoverable,
+const mixins = {
   alternateBackgroundSec,
   alternateMain,
   alternateBorder,
+  hoverable,
   shadow,
 };
+
+export default mixins;

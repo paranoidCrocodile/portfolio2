@@ -1,8 +1,16 @@
 import React, { useEffect } from "react";
 import styled, { withTheme } from "styled-components";
-import DevSVG from "../../assets/svg/dev.svg";
 import gsap from "gsap";
+import DevSVG from "../../assets/svg/dev.svg";
 import util from "../../utils/util";
+import SVGData from "../../assets/svg_data/dev";
+
+const {
+  transformOrigins,
+  movingParts,
+  colorChangingParts,
+  SVGID,
+} = SVGData as DevSVGDataObj;
 
 const SVGDiv = styled(DevSVG)`
   width: 100%;
@@ -13,42 +21,53 @@ const SVGDiv = styled(DevSVG)`
   }
 `;
 
-const SVGID = "#ade8c9af-7e2e-4eda-b5c8-b06129257226";
-
-const colorChangingParts = [
-  "rect:nth-child(26)",
-  "path:nth-child(3)",
-  "circle:nth-child(27)",
-  "circle:nth-child(28)",
-  "circle:nth-child(29)",
-];
-
-const movingParts = [
-  "path:nth-child(18)",
-  "path:nth-child(6)",
-  "circle:nth-child(16)",
-  "path:nth-child(21)",
-];
-
 const DevAnimation = (props: Obj): React.ReactElement => {
   useEffect(() => {
-    const { main } = props.theme as ThemeObj;
-    util.animateEach({
-      elems: util.multi$(SVGID, colorChangingParts, ">") as DOMSVGElement[],
-      fromTos: [[{}, { fill: main, duration: 0 }]],
-      tweenFunc: gsap.fromTo,
-    });
     util.animateEach({
       elems: util.multi$(SVGID, movingParts, ">") as DOMSVGElement[],
       fromTos: [
-        [{}, {}],
-        [{}, {}],
-        [{}, {}],
-        [{}, {}],
+        [
+          {
+            transformOrigin: transformOrigins[0],
+            rotate: "-1deg",
+            duration: 1,
+          },
+          { rotate: "1deg", duration: 1 },
+        ],
+        [
+          {
+            transformOrigin: transformOrigins[1],
+            rotate: "2deg",
+            duration: 1,
+          },
+          {
+            rotate: "1deg",
+            duration: 1,
+          },
+        ],
       ],
       tweenFunc: gsap.fromTo,
+      yoyo: true,
+      repeat: 999,
     });
-  });
+  }, []);
+  useEffect(() =>
+    util.animateEach({
+      elems: util.multi$(SVGID, colorChangingParts, ">") as DOMSVGElement[],
+      fromTos: [
+        [
+          {},
+          {
+            fill: (props.theme as ThemeObj).main,
+            duration: 0,
+          },
+        ],
+      ],
+      tweenFunc: gsap.fromTo,
+      yoyo: false,
+      repeat: 0,
+    })
+  );
   return <SVGDiv />;
 };
 

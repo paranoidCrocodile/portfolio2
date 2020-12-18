@@ -1,15 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import {
-  alternateBackgroundSec,
-  alternateBorder,
-  shadow,
-} from "../common/mixins";
+import util from "../../utils/util";
 
 interface CardProps {
   children: React.ReactNode;
   className?: string;
 }
+
+const { alternateBackgroundSec, alternateBorder, shadow } = util;
 
 const CardDiv = styled.div`
   width: 100%;
