@@ -3,10 +3,26 @@ import styled from "styled-components";
 import Header from "../components/header";
 import util from "../utils/util";
 import BaseLayout from "./BaseLayout";
+import { useStaticQuery, graphql } from "gatsby";
 
 interface LayoutProp extends ComponentProps {
   pageTitle: string;
   pageSubtitle: string;
+  avatar: boolean;
+}
+
+interface ImageData {
+  allImageSharp: {
+    edges: [
+      {
+        node: {
+          fixed: {
+            src: string;
+          };
+        };
+      }
+    ];
+  };
 }
 
 const { alternateBorder, shadow } = util;
@@ -73,13 +89,54 @@ const Main = styled.div`
   min-height: 17.75rem;
 `;
 
+const Avatar = styled.img`
+  position: absolute;
+  top: 125px;
+  left: 62.5%;
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+  ${util.alternateBorder}
+`;
+
+const AbsLayer = styled.div`
+  position: absolute;
+  width: 99vw;
+  margin: 0 auto;
+  min-height: 100vh;
+  height: 100%;
+  z-index: 2;
+  margin: 0;
+`;
+
 const MainLayout = ({
   children,
   pageTitle,
   pageSubtitle,
+  avatar,
 }: LayoutProp): React.ReactElement => {
+  const data = !avatar
+    ? null
+    : (useStaticQuery(graphql`
+        query Avatar {
+          allImageSharp(filter: { fixed: { src: { regex: "/avatar.jpg/" } } }) {
+            edges {
+              node {
+                fixed(width: 300, height: 300) {
+                  src
+                }
+              }
+            }
+          }
+        }
+      `) as ImageData);
   return (
     <BaseLayout>
+      {!avatar ? null : (
+        <AbsLayer>
+          <Avatar src={data?.allImageSharp.edges[0].node.fixed.src} />
+        </AbsLayer>
+      )}
       <Backdrop>
         <HeaderDiv />
         <PageHead>

@@ -5,6 +5,7 @@ import { Link } from "gatsby";
 import util from "../utils/util";
 import SEO from "../components/seo";
 import DevAnimation from "../components/animation/dev";
+import SlideReveal from "../components/animation/slideReveal";
 
 const { alternateBackgroundSec, hoverable } = util;
 
@@ -83,7 +84,14 @@ const Index: React.FC = (): React.ReactElement => {
           </Links>
         </Container>
         <SVGDiv>
-          <DevAnimation />
+          <SlideReveal
+            translateX="100%"
+            translateY="0px"
+            ease="power4.out"
+            duration={5}
+          >
+            <DevAnimation />
+          </SlideReveal>
         </SVGDiv>
       </Backdrop>
     </BaseLayout>

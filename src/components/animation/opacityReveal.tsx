@@ -1,19 +1,19 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
+import util from "../../utils/util";
 import gsap from "gsap";
 
 const Div = styled.div`
-  width: 100%;
-  height: 100%;
-  margin: 0;
+  ${util.arbitrarilySized}
 `;
 
 const OpacityReveal = ({
   children,
   duration,
+  ease,
 }: AnimationCompProps): React.ReactElement => {
   useEffect(() => {
-    gsap.from("#opacityReveal", { duration: duration, opacity: 0 });
+    gsap.from("#opacityReveal", { duration, opacity: 0, ease });
   }, []);
   return <Div id="opacityReveal">{children}</Div>;
 };

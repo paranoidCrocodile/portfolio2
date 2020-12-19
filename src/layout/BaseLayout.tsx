@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import ThemeIcon from "../assets/svg/themeIcon.svg";
-import "../style/reset.css";
-import "../style/global.css";
+import Global from "../style/global";
+import Reset from "../style/reset";
 
 const ThemeButton = styled.div`
   position: fixed;
@@ -49,6 +49,8 @@ const BaseLayout = ({ children }: ComponentProps): React.ReactElement => {
   return (
     <>
       <ThemeProvider theme={themeBool ? darkTheme : lightTheme}>
+        <Global />
+        <Reset />
         <ThemeButton onClick={(e) => changeTheme(!themeBool)}>
           <ThemeIcon />
         </ThemeButton>

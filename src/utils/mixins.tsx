@@ -33,6 +33,12 @@ const hoverable = css`
   }
 `;
 
+const arbitrarilySized = css`
+  width: 100%;
+  height: 100%;
+  margin: 0;
+`;
+
 const shadow = css`
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
 `;
@@ -40,6 +46,7 @@ const shadow = css`
 const mixins = {
   alternateBackgroundSec,
   alternateMain,
+  arbitrarilySized,
   alternateBorder,
   hoverable,
   shadow,

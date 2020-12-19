@@ -12,6 +12,7 @@ interface ComponentProps {
 
 interface AnimationCompProps extends ComponentProps {
   duration: number;
+  ease: string | gsap.EaseFunction | undefined;
 }
 
 //DOM Elements
@@ -36,7 +37,7 @@ interface DevSVGDataObj extends SVGDataObj {
 }
 
 interface AnimationObject {
-  elems: DOMSVGElement[];
+  elems: DOMSVGElement[] | HTMLElement[];
   fromTos: [gsap.TweenVars, gsap.TweenVars?][];
   tweenFunc: function;
   yoyo: boolean;
@@ -57,6 +58,7 @@ interface ThemeObj {
 interface utilObj {
   gsap: {
     animateEach: (AnimationObj) => void;
+    fromDirection: (direction: number, x: number, y: number) => string;
   };
   dom: {
     $: (elem: string) => Node;
