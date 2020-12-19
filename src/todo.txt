@@ -27,4 +27,9 @@ SVGs:
   - query image with gatsby-image (DONE)
 
 2020/12/19 4:24PM
-  - style MainLayout to include optional rendering for PFP Component
+  - style MainLayout to include optional rendering for PFP Component (DONE)
+
+2020/12/19 10:17PM
+  - fix error when running "npm run build"
+  - deploy static website files with NGINX
+  - use PM2 to run both NGINX and node.js apps (such as a discord bot)
