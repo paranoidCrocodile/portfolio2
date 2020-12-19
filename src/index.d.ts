@@ -1,14 +1,29 @@
-type SVG = React.ReactElement | AnyStyledComponent;
-
+//modules
 declare module "*.svg" {
   const content: SVG;
   export default content;
 }
 
+//components
+interface ComponentProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+interface AnimationCompProps extends ComponentProps {
+  duration: number;
+}
+
+//DOM Elements
+type SVG = React.ReactElement | AnyStyledComponent;
+
 interface DOMSVGElement
   extends SVGRectElement,
     SVGCircleElement,
     SVGPathElement {}
+
+//generic objects
+type Obj = Record<string, unknown>;
 
 interface SVGDataObj {
   SVGID: string;
@@ -20,18 +35,12 @@ interface DevSVGDataObj extends SVGDataObj {
   transformOrigins: string[];
 }
 
-type Obj = Record<string, unknown>;
-
 interface AnimationObject {
   elems: DOMSVGElement[];
   fromTos: [gsap.TweenVars, gsap.TweenVars?][];
   tweenFunc: function;
   yoyo: boolean;
   repeat: number;
-}
-
-interface AnimationCompProps extends ComponentProps {
-  duration: number;
 }
 
 interface ThemeObj {
@@ -45,25 +54,18 @@ interface ThemeObj {
   isDark: boolean;
 }
 
-interface domExportObj {
-  $: (elem: string) => Node;
-  $$: (elems: string) => NodeListOf<Node>;
-  multi$: (prefix: string, elems: string[], combinator: string[]) => unknown[];
-}
-
-interface gsapExportObj {
-  animateEach: (anim: AnimationObj) => void;
-}
-
-type mixinsExportObj = Record<string, string>;
-
 interface utilObj {
-  gsap: gsapExportObj;
-  dom: domExportObj;
-  mixins: mixinsExportObj;
-}
-
-interface ComponentProps {
-  children: React.ReactNode;
-  className?: string;
+  gsap: {
+    animateEach: (AnimationObj) => void;
+  };
+  dom: {
+    $: (elem: string) => Node;
+    $$: (elems: string) => NodeListOf<Node>;
+    multi$: (
+      prefix: string,
+      elems: string[],
+      combinator: string[]
+    ) => unknown[];
+  };
+  mixins: Record<string, string>;
 }

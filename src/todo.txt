@@ -23,5 +23,8 @@ SVGs:
   - animate the moving parts of dev.svg (DONE)
 
 2020/12/19 12:13PM
-  - learn graphQL from howtographQL.com
-  - query image with gatsby-image
+  - learn graphQL from howtographQL.com (NOT DONE)
+  - query image with gatsby-image (DONE)
+
+2020/12/19 4:24PM
+  - style MainLayout to include optional rendering for PFP Component
