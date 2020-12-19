@@ -6,6 +6,7 @@ import Card from "../components/common/card";
 const page = {
   pageTitle: "This is a mockup page",
   pageSubtitle: "Not intended to be shown in production",
+  avatar: true,
 };
 
 const Mockup: React.FC = (): React.ReactElement => (

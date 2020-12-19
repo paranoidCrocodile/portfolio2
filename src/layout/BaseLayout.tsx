@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import ThemeIcon from "../assets/svg/themeIcon.svg";
 import Global from "../style/global";
@@ -44,19 +44,16 @@ const darkTheme = {
 };
 
 const BaseLayout = ({ children }: ComponentProps): React.ReactElement => {
-  const preferDark = window.matchMedia("(prefers-color-scheme: dark").matches;
-  const [themeBool, changeTheme] = useState(preferDark);
+  const [themeBool, changeTheme] = useState(false);
   return (
-    <>
-      <ThemeProvider theme={themeBool ? darkTheme : lightTheme}>
-        <Global />
-        <Reset />
-        <ThemeButton onClick={(e) => changeTheme(!themeBool)}>
-          <ThemeIcon />
-        </ThemeButton>
-        {children}
-      </ThemeProvider>
-    </>
+    <ThemeProvider theme={themeBool ? darkTheme : lightTheme}>
+      <Global />
+      <Reset />
+      <ThemeButton onClick={(e) => changeTheme(!themeBool)}>
+        <ThemeIcon />
+      </ThemeButton>
+      {children}
+    </ThemeProvider>
   );
 };
 
