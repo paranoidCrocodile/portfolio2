@@ -7,6 +7,7 @@ const HeaderDiv = styled.div`
   top: 0px;
   color: ${(props) => props.theme.fontLight};
   background-color: ${(props) => props.theme.second};
+  transition: background-color 0.25s ease-in-out;
 `;
 
 const BlankDiv = styled.div`

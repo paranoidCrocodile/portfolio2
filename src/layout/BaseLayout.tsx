@@ -4,10 +4,6 @@ import ThemeIcon from "../assets/svg/themeIcon.svg";
 import "../style/reset.css";
 import "../style/global.css";
 
-interface BaseLayoutProps {
-  children: React.ReactNode;
-}
-
 const ThemeButton = styled.div`
   position: fixed;
   height: 6rem;
@@ -47,7 +43,7 @@ const darkTheme = {
   isDark: true,
 };
 
-const BaseLayout = ({ children }: BaseLayoutProps): React.ReactElement => {
+const BaseLayout = ({ children }: ComponentProps): React.ReactElement => {
   const preferDark = window.matchMedia("(prefers-color-scheme: dark").matches;
   const [themeBool, changeTheme] = useState(preferDark);
   return (

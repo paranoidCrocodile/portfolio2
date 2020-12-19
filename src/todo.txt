@@ -22,3 +22,6 @@ SVGs:
   - make a higher-order-function that executes a given callback only when a React FC is mounted. (DONE)
   - animate the moving parts of dev.svg (DONE)
 
+2020/12/19 12:13PM
+  - learn graphQL from howtographQL.com
+  - query image with gatsby-image

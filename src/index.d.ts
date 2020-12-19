@@ -20,8 +20,6 @@ interface DevSVGDataObj extends SVGDataObj {
   transformOrigins: string[];
 }
 
-type queriedElement<T> = T | null;
-
 type Obj = Record<string, unknown>;
 
 interface AnimationObject {
@@ -32,9 +30,8 @@ interface AnimationObject {
   repeat: number;
 }
 
-interface AnimationCompProps {
+interface AnimationCompProps extends ComponentProps {
   duration: number;
-  children: React.ReactNode;
 }
 
 interface ThemeObj {
@@ -58,7 +55,15 @@ interface gsapExportObj {
   animateEach: (anim: AnimationObj) => void;
 }
 
+type mixinsExportObj = Record<string, string>;
+
 interface utilObj {
   gsap: gsapExportObj;
   dom: domExportObj;
+  mixins: mixinsExportObj;
+}
+
+interface ComponentProps {
+  children: React.ReactNode;
+  className?: string;
 }

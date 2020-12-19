@@ -2,11 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import util from "../../utils/util";
 
-interface CardProps {
-  children: React.ReactNode;
-  className?: string;
-}
-
 const { alternateBackgroundSec, alternateBorder, shadow } = util;
 
 const CardDiv = styled.div`
@@ -19,7 +14,7 @@ const CardDiv = styled.div`
   ${shadow}
 `;
 
-const Card = ({ children, className }: CardProps): React.ReactElement => (
+const Card = ({ children, className }: ComponentProps): React.ReactElement => (
   <CardDiv className={className || ""}>{children}</CardDiv>
 );
 

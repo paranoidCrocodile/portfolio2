@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-interface ButtonProps {
-  children: React.ReactNode;
+interface ButtonProps extends ComponentProps {
   onClick: (e: React.MouseEvent) => void;
 }
 

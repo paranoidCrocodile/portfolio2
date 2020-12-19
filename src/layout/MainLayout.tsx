@@ -4,8 +4,7 @@ import Header from "../components/header";
 import util from "../utils/util";
 import BaseLayout from "./BaseLayout";
 
-interface LayoutProp {
-  children?: React.ReactNode;
+interface LayoutProp extends ComponentProps {
   pageTitle: string;
   pageSubtitle: string;
 }
