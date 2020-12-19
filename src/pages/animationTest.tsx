@@ -20,6 +20,7 @@ const props = {
   translateX: "100%",
   translateY: "0%",
   duration: 1,
+  ease: "power4.out",
 };
 
 const AnimationTest = (): React.ReactElement => (

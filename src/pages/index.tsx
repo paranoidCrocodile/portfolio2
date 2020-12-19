@@ -88,7 +88,7 @@ const Index: React.FC = (): React.ReactElement => {
             translateX="100%"
             translateY="0px"
             ease="power4.out"
-            duration={5}
+            duration={1.5}
           >
             <DevAnimation />
           </SlideReveal>
